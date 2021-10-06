@@ -23,6 +23,11 @@ class Animal:
             self.name = name.upper()
     
     def toString(self):
-        print("Species: " , self.species, ", ", "Name: ", self.name,\
-            ", Age: ", self.age, ", Weight: ", self.weight, sep='')
-    
+        s = ["Species: " + self.species + ", " + "Name: " + self.name,\
+            ", Age: " + str(self.age), ", Weight: "+  str(self.weight)]
+        s = str(s)
+        s = s.replace("'", "")    
+        return s
+
+p = Animal("cat", 23.3, 12, "JUDG")
+print(p.toString())

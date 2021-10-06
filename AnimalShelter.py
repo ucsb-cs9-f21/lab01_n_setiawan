@@ -25,8 +25,14 @@ class AnimalShelter:
             else:
                 print("You have tried to remove an non-existing animal.")
 
-   # def getAnimalBySpecies(self, species):
-
+    def getAnimalBySpecies(self, species):
+        if species not in self.dict1:
+            return ""
+        elif species in self.dict1:
+            l = self.dict1[species]
+            for i in range(len(l)):
+                s = l[i].toString()
+                print(s, "\n")
 
     def doesAnimalExist(self, animal):
         if animal.species not in self.dict1:
@@ -37,11 +43,4 @@ class AnimalShelter:
                 if (l[i].weight == animal.weight) and (l[i].species == animal.species) and (l[i].name == animal.name) and (l[i].age == animal.age):
                     return True
 
-As = AnimalShelter()
-a = Animal("cat", 23.3, 12, "JUDG")
-b = Animal("cat", 23.3, 34, "Monev")
-
-As.addAnimal(b)
-As.addAnimal(a)
-As.removeAnimal(a)
-print(As.dict1)
+    # def __eq__(self, rhs):
