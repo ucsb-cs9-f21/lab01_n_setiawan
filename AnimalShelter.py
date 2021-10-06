@@ -6,32 +6,42 @@ class AnimalShelter:
         self.dict1 = {}
 
     def addAnimal(self, animal):
-        self.dict1[animal.species] = list.append(animal)
-
-        keyList = list(self.dict1.keys())
-
-        for i in range(len(keyList)):
-            self.dict1[keyList[i]] = len(self.dict1)
-
-        
+        if animal.species in self.dict1:
+           l = self.dict1[animal.species]
+           l.append(animal)
+           self.dict1[animal.species] = l
+        elif animal.species not in self.dict1:
+            self.dict1[animal.species] = [animal]
 
     def removeAnimal(self, animal):
-        if (self.dict1.get(animal.species) == None) and (self.dict)
-            print("You have tried to remove an non-existing object.")
-        elif self.dict1.get(animal.species) == True:
+        if animal.species not in self.dict1:
+            print("You have tried to remove an non-existing species.")
+        elif animal.species in self.dict1:
+            if self.doesAnimalExist(animal):
+                for i in range(len(self.dict1[animal.species])):
+                    if (self.dict1[animal.species][i].weight == animal.weight) and (self.dict1[animal.species][i].species == animal.species) and (self.dict1[animal.species][i].name == animal.name) and (self.dict1[animal.species][i].age == animal.age):
+                        x = i
+                self.dict1[animal.species].pop(x)
+            else:
+                print("You have tried to remove an non-existing animal.")
 
-    def getAnimalBySpecies(self, species):
+   # def getAnimalBySpecies(self, species):
 
 
     def doesAnimalExist(self, animal):
-        if self.dict1.get(animal.species) == None:
+        if animal.species not in self.dict1:
             return False
-        elif self.dict1.get(animal.species) == True:
-            animal.species = 
+        elif animal.species in self.dict1:
+            l = self.dict1.get(animal.species)
+            for i in range(len(l)):
+                if (l[i].weight == animal.weight) and (l[i].species == animal.species) and (l[i].name == animal.name) and (l[i].age == animal.age):
+                    return True
 
 As = AnimalShelter()
-a = Animal("dog", 23.3, 12, "JUDG")
+a = Animal("cat", 23.3, 12, "JUDG")
 b = Animal("cat", 23.3, 34, "Monev")
 
 As.addAnimal(b)
-print(As.dict1[a])
+As.addAnimal(a)
+As.removeAnimal(a)
+print(As.dict1)
