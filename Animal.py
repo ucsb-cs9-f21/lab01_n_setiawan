@@ -28,6 +28,3 @@ class Animal:
         s = str(s)
         s = s.replace("'", "")    
         return s
-
-p = Animal("cat", 23.3, 12, "JUDG")
-print(p.toString())
